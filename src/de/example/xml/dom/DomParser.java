@@ -18,6 +18,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
+import de.example.xml.XmlHelper;
+
 /**
  * 
  * @author Bastian Bräunel
@@ -102,7 +104,7 @@ public class DomParser {
 	private Document loadXMLFromFile(File xmlFile) {
 		
 		// check if the file is an xml file
-		if (!hasXmlFileExtension(xmlFile)) {
+		if (!XmlHelper.hasXmlFileExtension(xmlFile)) {
 			return null;
 		}
 		
@@ -129,25 +131,5 @@ public class DomParser {
 		}
 		
 		return null;
-	}
-	
-	/**
-	 * Check to .xml file extension of a given file
-	 * 
-	 * @param xmlFile	The file that acts to be an xml file
-	 * @return			true if file ends with .xml, false if not
-	 */
-	private boolean hasXmlFileExtension(File xmlFile) {
-		// Make sure it has the correct extension
-		String filename = xmlFile.getName();
-		String extension = filename.substring(filename.lastIndexOf(".") + 1, filename.length());
-		extension = extension.toLowerCase();
-		if (extension.contains("xml")) {
-			return true;
-		}
-		
-		System.err.println(this.getClass().toString() + ".hasXmlFileExtension" + ": Files does ot end with .xml");
-		System.err.println("\t file: " + xmlFile.getAbsolutePath());
-		return false;
 	}
 }
