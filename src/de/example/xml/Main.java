@@ -1,5 +1,9 @@
 package de.example.xml;
 
+import java.io.File;
+
+import de.example.xml.sax.SaxParser;
+
 /**
  * 
  * @author Bastian Bräunel
@@ -8,8 +12,10 @@ package de.example.xml;
 public class Main {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		File xmlFile = new File("./res/employee.xml");
+		SaxParser saxParser = new SaxParser();
+		saxParser.parseXML(xmlFile);
+		
 	}
 
 }
